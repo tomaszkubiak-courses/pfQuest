@@ -1423,6 +1423,15 @@ function pfDatabase:QuestFilter(id, plevel, pclass, prace)
     if not one_complete then return end
   end
 
+  -- hide quests whose chain predecessor is still in the quest log. A quest chain link is not a
+  -- prerequisite: the server refuses the follow-up only while the previous quest is still being
+  -- worked on, and never asks for it to have been completed.
+  if quests[id]["prechain"] then
+    for _, prequest in pairs(quests[id]["prechain"]) do
+      if pfQuest.questlog[prequest] then return end
+    end
+  end
+
   -- hide non-available quests for your race
   if quests[id]["race"] and not ( bit.band(quests[id]["race"], prace) == prace ) then return end
 
