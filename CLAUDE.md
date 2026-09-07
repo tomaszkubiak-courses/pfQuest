@@ -15,7 +15,9 @@ directly. Verification means loading the addon in a game client and using `/db` 
 ## Workflow
 
 This is a personal fork, not a shared team repository, so there is no pull request process. `origin` is the
-fork and is the only push target; `upstream` is the archived original and is fetch-only.
+fork and is the only push target; `upstream` is the original repository, archived in 2025. It will never
+receive another commit, so do not fetch it, diff against it, or check it for upstream changes — this fork is
+the only source of truth.
 
 All work lands on `master`. Feature branches are optional and local: merge them into `master` locally
 (fast-forward where possible) and push `master` to `origin`. Do not open pull requests, and do not push a
