@@ -12,6 +12,15 @@ MaNGOS server databases, and plots matches on the world- and minimap. Upstream i
 There is no test suite, linter or build step for the addon code itself — the client loads the `.lua` files
 directly. Verification means loading the addon in a game client and using `/db` commands or `/reload`.
 
+## Workflow
+
+This is a personal fork, not a shared team repository, so there is no pull request process. `origin` is the
+fork and is the only push target; `upstream` is the archived original and is fetch-only.
+
+All work lands on `master`. Feature branches are optional and local: merge them into `master` locally
+(fast-forward where possible) and push `master` to `origin`. Do not open pull requests, and do not push a
+branch as a substitute for merging it. Once a branch is merged, delete it locally and on the fork.
+
 ## Commands
 
 ```sh
