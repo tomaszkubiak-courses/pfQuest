@@ -128,3 +128,29 @@ account-wide `pfQuest_questcache`. Adding one means editing all three `.toc` fil
 
 `locales.lua` holds the UI string table (`pfQuest_Loc`, indexed by the English string). Database translations
 are separate and live in `db/<locale>/`.
+
+## The realm this fork is used with, and `docs/realm/`
+
+This fork is maintained alongside one VMaNGOS server, referred to below as *the realm*. Its
+world database is the yardstick for whether the shipped `db/` data is right: pfQuest's vanilla
+data is itself generated from a VMaNGOS database, so a divergence is either an extractor rule or
+an older snapshot, not different content.
+
+`docs/realm/` holds the investigations behind the realm-specific commits. Read the relevant one
+before changing what it covers:
+
+- `world-db-diff-2026-09-01.md` — the full comparison of the shipped database against that world
+  database (quests, spawns, templates, loot), the method for redoing it, and the SQL schema traps
+  that made the first pass report a large fictional gap.
+- `quest-chain-prerequisite-bug-2026-09-06.md` — why `extractor.lua` rule 3 turns a chain link
+  into a prerequisite, and the `prechain` fix in `overwrites.lua` and `database.lua`.
+
+Those files cite paths, commits and C++ symbols in the realm's own repository, which is a
+separate checkout; nothing outside `docs/` refers to this one.
+
+## Two checkouts
+
+There are two copies of this addon on a development machine: this repository, and the addon
+directory the game client actually loads, inside the client's `Interface/AddOns`. **Editing only
+this repository changes nothing in game.** Apply a fix to both, or copy the tree across, before
+claiming anything is verified in the client.
